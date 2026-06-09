@@ -203,3 +203,105 @@ git push origin bug
 ## Créditos
 
 Este roteiro foi elaborado após ajustes e alterações do [roteiro original](https://github.com/aserg-ufmg/demo-ci) elaborado por **Rodrigo Brito**, aluno de mestrado do DCC/UFMG, como parte das suas atividades na disciplina Estágio em Docência, cursada em 2020/2, sob orientação do **Prof. Marco Tulio Valente**.
+
+## Tarefa #3: Parte A - GitHub Flow
+
+O objetivo é exercitarmos ao GitHub Flow com a `feature/potencia`.
+
+#### Passo 1
+
+Criar uma nova branch:
+
+```bash
+git checkout -b feature/potencia
+```
+
+Adicionar a função para calculadora e seu respectivo teste de unidade:
+
+```python
+# Adicionar a calculator.py
+def potencia(a, b):
+    return a ** b
+
+# Adicionar ao teste: test_calculator.py
+def test_potencia():
+    assert potencia(2, 3) == 8
+```
+
+#### Passo 2
+
+```bash
+git add .
+git commit -m "Adiciona operação potência"
+git push origin feature/potencia
+```
+
+#### Passo 3
+
+Em seguida, crie um Pull Request (PR) com sua modificação da branch `feature/potencia` para branch `main`.
+
+
+## Tarefa #4: Parte B – Git Flow
+
+Agora, seguindo o mesmo projeto usando Git Flow iremos adicionar duas novas funcionalidades: raiz e média.
+Nessa parte, iremos realizar o direcionamento das modificações para a branch `develop`.
+
+#### Passo 1
+
+No primeiro passo, iremos criar a `branch` fazendo uma ramificação da branch principal e disponibilizá-la no repositório remoto.
+
+```
+git checkout main
+git checkout -b develop
+git push origin develop
+```
+
+#### Passo 2
+
+Agora, para criarmos a nova feature de média, iremos realizar o checkout da branch `develop` e criar uma nova branch direcionada a essa funcionalidade.
+
+```bash
+git checkout develop
+git checkout -b feature/media
+```
+
+Depois, adicionamos o seguinte código:
+
+```python
+# Adicionar a calculator.py
+def media(a, b):
+    return (a + b) / 2
+
+# Adicionar ao teste: test_calculator.py
+def test_media():
+    assert media(4, 6) == 5
+```
+
+Realize o `commit` e `push` para o repositório remoto, depois abra o PR da branch `feature/media` para branch `develop`.
+
+```bash
+git add .
+git commit -m "Adiciona operação potência"
+git push origin feature/media
+```
+
+#### Passo 3
+
+Por fim, iremos realizar uma nova release do projeto,  quando a branch `develop` estiver estável:
+
+```bash
+git checkout develop
+git checkout -b release/1.0.0
+#Correções finais.
+git push origin release/1.0.0
+```
+
+Depois, crie uma nova PR dessa branch para a `main`:
+
+```bash
+#PR:
+release/1.0.0 -> main
+```
+
+**Repita os passos de 1 a 3** para as novas funcionalidades: `raiz quadrada`, `módulo`, e `porcentagem`. 
+Lembre-se que para cada funcionalidade deve seguir os passos anteriormente elencados.
