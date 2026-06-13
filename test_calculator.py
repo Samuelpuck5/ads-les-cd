@@ -12,3 +12,7 @@ def test_multiplicacao():
 
 def test_divisao():
     assert divisao(8, 2) == 4
+
+def test_divisao_por_zero():
+    with pytest.raises(ValueError):
+        divisao(10, 0)
